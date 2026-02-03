@@ -1,4 +1,4 @@
-# 45HomeLab Hub
+# 45Homelab Hub
 
 This site contains notes, links, and example files referenced in 45Homelab YouTube videos.
 
