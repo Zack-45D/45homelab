@@ -1,32 +1,15 @@
 {
   "name": "45homelab",
   "version": "1.0.0",
-  "description": "A Repository  for the 45Homelab Youtube channel",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "description": "A Repository for the 45Homelab YouTube channel",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Zack-45D/45homelab.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Zack-45D/45homelab/issues"
-  },
-  "homepage": "https://github.com/Zack-45D/45homelab#readme",
-  "devDependencies": {
-    "vitepress": "^1.6.4"
-  },
- "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0"
   }
 }
+
 

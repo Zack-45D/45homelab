@@ -1,6 +1,8 @@
 export default {
   title: "45Homelab Hub",
   description: "Centralized links and notes",
+  base: "/45homelab/",
+
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
@@ -16,4 +18,3 @@ export default {
     ]
   }
 }
-
