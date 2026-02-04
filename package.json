@@ -2,11 +2,11 @@
   "name": "45homelab",
   "version": "1.0.0",
   "description": "A Repository for the 45Homelab YouTube channel",
-  "Note": "This is a work in progress and will evolve as I get a better grasp on Vitepress - Zack P.",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "build": "vitepress build docs"
   },
   "devDependencies": {
     "vitepress": "^1.0.0"
