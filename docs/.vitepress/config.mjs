@@ -11,10 +11,9 @@ export default {
     sidebar: [
       {
         text: "Videos",
-        items: [
-          { text: "Cloud-Init", link: "/videos/cloud-init/" }
-        ]
+        items: [{ text: "Cloud-Init", link: "/videos/cloud-init/" }]
       }
     ]
   }
 }
+
