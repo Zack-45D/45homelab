@@ -1,5 +1,5 @@
 export default {
-  title: "45Homelab Hub",
+  title: "45Homelab Repository",
   description: "Centralized links and notes",
   base: "/45homelab/",
 
