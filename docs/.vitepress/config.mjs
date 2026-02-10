@@ -6,12 +6,14 @@ export default {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
-      { text: "Videos", link: "/videos/cloud-init/" }
+      { text: "Articles", link: "/videos/" }
     ],
     sidebar: [
       {
-        text: "Videos",
-        items: [{ text: "Cloud-Init", link: "/videos/cloud-init/" }]
+        text: "Articles",
+        items: [
+          { text: "Cloud-Init", link: "/videos/cloud-init/" }
+        ]
       }
     ]
   }
