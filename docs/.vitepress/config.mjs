@@ -5,12 +5,11 @@ export default {
 
   themeConfig: {
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Videos", link: "/videos/cloud-init/" }
+      { text: "Home", link: "/" }
     ],
     sidebar: [
       {
-        text: "Videos",
+        text: "Content",
         items: [{ text: "Cloud-Init", link: "/videos/cloud-init/" }]
       }
     ]
