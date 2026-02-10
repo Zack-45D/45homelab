@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: 45Homelab Companion
-  text: Commands, configs, and links for each companion article
-  tagline: Bookmark this — each YouTube description links to the matching page here.
+  text: This site contains notes, links, and example files referenced in 45HomeLab YouTube videos.
+  tagline: Work in progress — expect the layout to evolve over time.
   actions:
     - theme: brand
       text: Latest Article
@@ -19,9 +19,6 @@ features:
     link: /articles/cloud-init/
   - title: Article Library
     details: Browse all companion articles (commands, code, links).
-    link: /articles/
-  - title: How to use this
-    details: Open an article, copy commands, grab files, and follow along.
     link: /articles/
 ---
 
