@@ -8,24 +8,24 @@ hero:
   actions:
     - theme: brand
       text: Latest Article
-      link: /videos/cloud-init/
+      link: /articles/cloud-init/
     - theme: alt
       text: Browse All Articles
-      link: /videos/
+      link: /articles/
 
 features:
   - title: Latest
     details: Cloud-Init — templates, Terraform example, and Proxmox commands.
-    link: /videos/cloud-init/
+    link: /articles/cloud-init/
   - title: Article Library
     details: Browse all companion articles (commands, code, links).
-    link: /videos/
+    link: /articles/
   - title: How to use this
     details: Open an article, copy commands, grab files, and follow along.
-    link: /videos/
+    link: /articles/
 ---
 
 ## Articles
 
-- [Cloud-Init](/videos/cloud-init/)
+- [Cloud-Init](/articles/cloud-init/)
 

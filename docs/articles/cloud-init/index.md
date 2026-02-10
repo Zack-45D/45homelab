@@ -6,7 +6,7 @@
 Notes and example files used in the Cloud-Init video.
 
 ## Files
-- Example configs: `videos/cloud-init/`
+- Example configs: `articles/cloud-init/`
 
 ## Notes
 
