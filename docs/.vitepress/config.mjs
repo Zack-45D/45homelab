@@ -15,20 +15,24 @@ export default {
       { text: "Articles", link: "/articles/" }
     ],
 
-    sidebar: [
-      {
-        text: "Articles",
-        items: [
-          { text: "Cloud-Init", link: "/articles/cloud-init/" }
-        ]
-      }
-    ],
+    // Sidebar only appears when you're in /articles/
+    sidebar: {
+      "/articles/": [
+        {
+          text: "Articles",
+          items: [
+            { text: "Cloud-Init", link: "/articles/cloud-init/" }
+            // Add new articles here:
+            // { text: "HL15 Beast Deploy", link: "/articles/hl15-beast-deploy/" }
+          ]
+        }
+      ]
+    },
 
     outline: "deep",
     search: { provider: "local" },
 
     socialLinks: [
-      // optional — remove if you don't want it
       { icon: "github", link: "https://github.com/Zack-45D/45homelab" }
     ],
 
@@ -38,4 +42,3 @@ export default {
     }
   }
 };
-
