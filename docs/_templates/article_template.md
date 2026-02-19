@@ -1,13 +1,24 @@
-# {{VIDEO_TITLE}}
+# {{TITLE}}
 
 ## YouTube Video
-- (paste the YouTube link here)
+- (paste YouTube link)
 
 ## What this page contains
-Notes and example files used in the {{VIDEO_TITLE}} video.
+Notes and example files used in the **{{TITLE}}** video.
 
-## Files
-- Example configs: `videos/{{VIDEO_SLUG}}/`
+## What you’ll learn
+- (bullet list of outcomes)
 
-## Notes
-- Add your steps or explanations here
+## Prerequisites
+- (what you should already have)
+
+## Notes / Walkthrough
+
+### Steps
+- Step 1:
+- Step 2:
+
+### Commands
+```bash
+# commands go here
+

@@ -5,12 +5,10 @@
 ## What this page contains
 Notes and example files used in the Cloud-Init video.
 
-## Files
-- Example configs: `articles/cloud-init/`
-
 ## Notes
+General config files, contents will likely differ based on your set up
 
-**Proxmox Template Creation Walkthrough**
+## Proxmox Template Creation Walkthrough
 ```bash
 # 1) Download cloud image (example: Ubuntu 22.04 Jammy)
 wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
@@ -57,7 +55,7 @@ qm template 9000
 
 **Terraform template files**
 
-They use **placeholders** like `REPLACE_ME`, `${ADMIN_USER}`, etc.
+**placeholders** like `REPLACE_ME`, `${ADMIN_USER}`, etc.
 
 ---
 
