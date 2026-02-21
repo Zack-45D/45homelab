@@ -3,7 +3,7 @@
 Companion guides for videos — commands, configs, and links.
 
 ## Latest
-- [Homepage](/articles/homepage)
+- [Homepage](/articles/homepage/)
 
 
 ## All articles
