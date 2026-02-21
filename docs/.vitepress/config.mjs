@@ -9,6 +9,7 @@ export default {
 
   themeConfig: {
     siteTitle: "45Homelab Repository",
+    logo: "/images/45homelab-logo.png",
 
     nav: [
       { text: "Home", link: "/" },

@@ -1,12 +1,12 @@
 # {{TITLE}}
 
 ## YouTube Video
-- [45Homelab TOPIC Video](https://www.youtube.com/watch?...)
+- [45Homelab Termix Video](https://www.youtube.com/watch?v=Jw6vh2eOomo)
 
 ---
 
 ## What this page contains
-Notes, commands, and downloadable example files used in the **TOPIC** video.
+Notes, commands, and downloadable example files used in the **Termix** video.
 
 ---
 
@@ -34,10 +34,21 @@ docker compose up -d
 ## Configuration Example
 
 ```yaml
-version: "3.9"
 services:
-  example:
-    image: example:latest
+  termix:
+    image: bugattiguy527/termix:latest
+    container_name: termix
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - termix-data:/app/data
+    environment:
+      PORT: "8080"
+
+volumes:
+  termix-data:
+    driver: local
 ```
 
 ---
@@ -89,4 +100,3 @@ Download everything in one archive:
 > All downloadable files for this article are stored in:
 >
 > `docs/public/files/<ARTICLE_SLUG>/`
-

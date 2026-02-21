@@ -3,9 +3,10 @@
 Companion guides for videos — commands, configs, and links.
 
 ## Latest
-- [Homepage](/articles/homepage/)
+- [Termix](/articles/termix/)
 
 
-## All articles
+## All Articles
 - [Cloud-Init](/articles/cloud-init/)
 - [Homepage](/articles/homepage/)
+- [Termix](/articles/termix/)
