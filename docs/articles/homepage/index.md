@@ -66,9 +66,9 @@ Next is our docker-compose.yaml below are the needed components all other are op
 - The restart section isn't required but reccomended so it comes back after reboots
 - Lastly the Glances section is completely optional it's just an extra container deployed to get system resources
 
-![alt text](image.png)
+![homepage-glances](./homepage-glances.png)
 
-```bash
+```yaml
 services:
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
@@ -128,6 +128,19 @@ services:
 ```
 Now our 3 files that bring everything together services.yaml, settings,yaml and widgets.yaml
 
-```bash
 
+**services.yaml**
+```yaml
+TO_BE_ADDED
+```
+
+**settings.yaml**
+```yaml
+TO_BE_ADDED
+```
+
+
+**widgets.yaml**
+```yaml
+TO_BE_ADDED
 ```
