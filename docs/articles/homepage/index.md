@@ -375,9 +375,9 @@ http://<your-host>:3009
 
 ## Files
 
-[View All Files on GitHub](/files/termix/homepage)
+[View All Files on GitHub](/files/homepage/homepage)
 
-[Download All Files (ZIP)](/files/termix/homepage-files.zip)
+[Download All Files (ZIP)](/files/homepage/homepage-files.zip)
 
 ## References
 
