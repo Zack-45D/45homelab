@@ -4,8 +4,10 @@ export default {
   title: "45Homelab Repository",
   description: "Centralized links and notes",
   base: "/45homelab/",
-
   cleanUrls: true,
+
+  // ✅ Don't treat docs/_templates as site pages (prevents build failures)
+  srcExclude: ["**/_templates/**"],
 
   themeConfig: {
     siteTitle: "45Homelab Repository",

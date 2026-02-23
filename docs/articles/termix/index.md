@@ -64,12 +64,12 @@ docs/public/files/<ARTICLE_SLUG>/images/
 Then reference them like this:
 
 ```md
-![Description of image](/files/<ARTICLE_SLUG>/images/example-1.png)
+<!-- ![Description of image](/files/<ARTICLE_SLUG>/images/example-1.png) -->
 ```
 
 Example:
 
-![Example Screenshot](/files/<ARTICLE_SLUG>/images/example-1.png)
+<!-- ![Example Screenshot](/files/<ARTICLE_SLUG>/images/example-1.png) -->
 
 Recommended image naming format:
 
