@@ -1,7 +1,7 @@
 ---
 layout: home
 hero:
-  name: 45Homelab
+  name: 45Homelab Docs
   text: This site contains notes, links, and example files referenced in 45HomeLab YouTube videos.
   tagline: Work in progress — expect the layout to evolve over time.
   image:

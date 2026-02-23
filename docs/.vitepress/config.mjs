@@ -1,7 +1,7 @@
 // docs/.vitepress/config.mjs
 export default {
   lang: "en-US",
-  title: "45Homelab Repository",
+  title: "45Homelab Docs",
   description: "Centralized links and notes",
   base: "/45homelab/",
   cleanUrls: true,
@@ -10,7 +10,7 @@ export default {
   srcExclude: ["**/_templates/**"],
 
   themeConfig: {
-    siteTitle: "45Homelab Repository",
+    siteTitle: "45Homelab Docs",
     logo: "/images/45homelab-logo.png",
 
     nav: [
