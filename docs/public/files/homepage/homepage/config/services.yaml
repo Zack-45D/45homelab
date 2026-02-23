@@ -1,0 +1,47 @@
+#####################################################################
+- System Monitoring:
+    - Glances:
+        icon: glances.svg
+        href: "http://{{HOMEPAGE_VAR_MONITOR_HOST}}:61208"
+        container: glances
+        description: Live system stats
+        widget:
+          type: glances
+          url: "http://{{HOMEPAGE_VAR_MONITOR_HOST}}:61208"
+          version: 4
+          metric: cpu
+          refreshInterval: 5000
+
+#####################################################################
+- Tools:
+    - Portainer:
+        icon: portainer.png
+        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+        description: Container management UI
+        widget:
+          type: portainer
+          url: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+          env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
+          key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
+
+#####################################################################
+- Virtualization:
+    - Proxmox (Node 1):
+        icon: proxmox.svg
+        href: "{{HOMEPAGE_VAR_PROXMOX_PVE1_URL}}"
+        widget:
+          type: proxmox
+          url: "{{HOMEPAGE_VAR_PROXMOX_PVE1_URL}}"
+          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+          password: "{{HOMEPAGE_VAR_PROXMOX_SECRET}}"
+          node: "{{HOMEPAGE_VAR_PROXMOX_PVE1_NODE}}"
+
+    - Proxmox (Node 2):
+        icon: proxmox.svg
+        href: "{{HOMEPAGE_VAR_PROXMOX_PVE2_URL}}"
+        widget:
+          type: proxmox
+          url: "{{HOMEPAGE_VAR_PROXMOX_PVE2_URL}}"
+          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+          password: "{{HOMEPAGE_VAR_PROXMOX_SECRET}}"
+          node: "{{HOMEPAGE_VAR_PROXMOX_PVE2_NODE}}"

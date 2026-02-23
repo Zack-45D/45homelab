@@ -1,0 +1,40 @@
+title: "Homepage Dashboard"
+language: en
+theme: dark
+color: slate
+target: _self
+headerStyle: boxed
+statusStyle: dot
+hideVersion: true
+
+fullWidth: true
+maxGroupColumns: 6
+useEqualHeights: true
+
+background:
+  image: /images/background.jpg
+  blur: sm
+  saturate: 50
+  brightness: 50
+  opacity: 35
+
+favicon: /icons/favicon.png
+
+layout:
+  System Monitoring:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-server
+
+  Tools:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-tools
+
+  Virtualization:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-server-network

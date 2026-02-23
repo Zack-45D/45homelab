@@ -1,0 +1,15 @@
+---
+pve1:
+  url: https://192.168.105.15:8006
+  token: api@pam!homepage
+  secret: <PROXMOX_API_TOKEN_SECRET>
+
+pve2:
+  url: https://192.168.105.16:8006
+  token: api@pam!homepage
+  secret: <PROXMOX_API_TOKEN_SECRET>
+
+pve3:
+  url: https://192.168.105.17:8006
+  token: api@pam!homepage
+  secret: <PROXMOX_API_TOKEN_SECRET>

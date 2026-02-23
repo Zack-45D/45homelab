@@ -1,35 +1,71 @@
 # Homepage
 
 ## YouTube Video
-- [Homepage](https://www.youtube.com/watch?v=7hc7mjitgIQ)
 
-## What this page contains
-Notes and example files used in the **Homepage** video.
+* [Homepage Walkthrough](https://www.youtube.com/watch?v=7hc7mjitgIQ)
 
-## Notes
-This has some added configurations that may not be needed depending on your set up. I'll be including all items from the video. I'll add comments to optional sections
+---
 
-## Homepage Setup Walkthrough
+## What This Page Contains
 
-**1) File Structure**
+This guide includes:
 
-In my set up I have all my containers living in `/home/zack/docker/<container_name>` yours may differ
+* Example `.env` file (safe template)
+* `docker-compose.yaml`
+* `services.yaml`
+* `settings.yaml`
+* `widgets.yaml`
+* Notes on required vs optional sections
 
+---
 
-```bash
-zack@hl15-beast:~/docker/homepage$ ls -al
-total 20
-drwxrwxr-x 3 zack zack 4096 Feb 19 13:09 .
-drwxrwxr-x 7 zack zack 4096 Feb 17 14:46 ..
-drwxrwxr-x 6 zack zack 4096 Jan 30 10:35 config
--rw-rw-r-- 1 zack zack 1345 Feb 19 13:09 docker-compose.yaml
--rw-rw-r-- 1 zack zack  754 Feb 19 13:06 .env
+# Homepage Setup Walkthrough
+
+---
+
+## Folder Structure
+
+In my setup, each container lives in:
+
 ```
-The first file we'll tackle is our .env because our docker-compose.yaml and inturn what's in our config will reference it's contents
-.env is optional but makes things easier when you want to have a central location to reference credentials, users etc
+/home/<user>/docker/<container_name>
+```
+
+Example:
 
 ```bash
-# user mapping
+~/docker/homepage/
+├── config/
+├── docker-compose.yaml
+└── .env
+```
+
+The `config/` directory contains:
+
+```
+services.yaml
+settings.yaml
+widgets.yaml
+icons/
+images/
+```
+
+---
+
+# .env file (Recommended)
+
+Using an `.env` file makes configuration cleaner and prevents secrets from being hardcoded in YAML.
+
+Create a file named:
+
+```
+.env
+```
+
+Example:
+
+```bash
+# User mapping
 PUID=1000
 PGID=1000
 
@@ -38,35 +74,44 @@ PGID=1000
 # (used in config/*.yaml as {{HOMEPAGE_VAR_*}})
 # -----------------------------
 
-# Glances / Uptime Kuma host
-HOMEPAGE_VAR_MONITOR_HOST=10.20.0.61
+# Monitoring host (Glances / Uptime Kuma)
+HOMEPAGE_VAR_MONITOR_HOST=192.168.1.10
 
 # Portainer
-HOMEPAGE_VAR_PORTAINER_URL=https://10.20.0.61:9443
-HOMEPAGE_VAR_PORTAINER_ENV=3
-HOMEPAGE_VAR_PORTAINER_KEY=<KEY>
+HOMEPAGE_VAR_PORTAINER_URL=https://192.168.1.10:9443
+HOMEPAGE_VAR_PORTAINER_ENV=1
+HOMEPAGE_VAR_PORTAINER_KEY=<PORTAINER_API_KEY>
 
-# Proxmox cluster (shared creds)
+# Proxmox API (use API token, NOT root password)
 HOMEPAGE_VAR_PROXMOX_USER=api@pam!homepage
-HOMEPAGE_VAR_PROXMOX_SECRET=030a2e73-6b9b-470d-bf09-ffebc16ee084
+HOMEPAGE_VAR_PROXMOX_SECRET=<PROXMOX_API_TOKEN_SECRET>
 
-# Proxmox node URLs
-HOMEPAGE_VAR_PROXMOX_PVE1_URL=https://192.168.105.15:8006
-HOMEPAGE_VAR_PROXMOX_PVE2_URL=https://192.168.105.16:8006
-HOMEPAGE_VAR_PROXMOX_PVE3_URL=https://192.168.105.17:8006
+# Proxmox nodes
+HOMEPAGE_VAR_PROXMOX_PVE1_URL=https://192.168.1.20:8006
+HOMEPAGE_VAR_PROXMOX_PVE2_URL=https://192.168.1.21:8006
+HOMEPAGE_VAR_PROXMOX_PVE3_URL=https://192.168.1.22:8006
+
+HOMEPAGE_VAR_PROXMOX_PVE1_NODE=node1
+HOMEPAGE_VAR_PROXMOX_PVE2_NODE=node2
+HOMEPAGE_VAR_PROXMOX_PVE3_NODE=node3
 ```
 
+---
 
-Next is our docker-compose.yaml below are the needed components all other are optional
-- The first necessary parts are the first 4 lines(5 is you're using a .env)
-- If you plan on using auto-discover as mentioned in the video you'll want to add the DOCKER_HOST section as well as the docker proxy section further down
-- Setting your ports will be needed 3009:3000 in my example, I specified 3009 because I access grafana via 3000. The 3000 on the right is for inside the container so that is fine to be doubled up.
-- volumes: ./config:/app/config is needed to have your homepage persistent across changes when recreating the container
-- The rest of the volumes section is optional, the second and third are for icons and images.
-- The restart section isn't required but reccomended so it comes back after reboots
-- Lastly the Glances section is completely optional it's just an extra container deployed to get system resources
+# 3️⃣ docker-compose.yaml
 
-![homepage-glances](./homepage-glances.png)
+This is the minimal working setup with optional Docker auto-discovery and Glances.
+
+## Docker-compse.yaml breakdown
+
+| Component              | What It Does                                                                                            |
+| ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| **homepage service**   | The main container running the Homepage dashboard UI                                                    |
+| **config volume**      | Mounts your local `./config` folder into the container so your settings persist                         |
+| **.env file**          | Stores variables (API keys, URLs, secrets) used inside your YAML files                                  |
+| **dockerproxy**        | Optional security layer that allows Homepage to read Docker info without exposing the raw `docker.sock` |
+| **glances**            | Optional monitoring container used to show live CPU/RAM stats in Homepage                               |
+| **icons/images mount** | Optional mount allowing custom icons and background images                                              |
 
 ```yaml
 services:
@@ -78,11 +123,10 @@ services:
       - ./.env
 
     environment:
-      HOMEPAGE_ALLOWED_HOSTS: 10.20.0.61:3009,10.20.0.61,hl15-beast:3009,hl15-beast,localhost:3009
-      PUID: 1000
-      PGID: 1000
+      PUID: ${PUID}
+      PGID: ${PGID}
 
-      # Use dockerproxy (no raw docker.sock in this container)
+      # Use docker proxy (recommended over raw docker.sock)
       DOCKER_HOST: http://dockerproxy:2375
 
     ports:
@@ -95,6 +139,7 @@ services:
 
     restart: unless-stopped
 
+  # Optional: Docker auto-discovery proxy
   dockerproxy:
     image: tecnativa/docker-socket-proxy:latest
     container_name: dockerproxy
@@ -113,6 +158,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
+  # Optional: Glances system monitoring
   glances:
     image: nicolargo/glances:latest
     container_name: glances
@@ -124,23 +170,217 @@ services:
       - GLANCES_OPT=-w
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-
 ```
-Now our 3 files that bring everything together services.yaml, settings,yaml and widgets.yaml
 
+---
 
-**services.yaml**
+# services.yaml
+
+This defines:
+
+* Service groups (System Monitoring, Tools, Virtualization, etc.)
+* Links (href)
+* Icons
+* Embedded widgets (Proxmox, Glances, Portainer, etc.)
+
+Think of this file as:
+
+> “What applications exist on my dashboard?”
+
 ```yaml
-TO_BE_ADDED
+#####################################################################
+- System Monitoring:
+    - Glances:
+        icon: glances.svg
+        href: "http://{{HOMEPAGE_VAR_MONITOR_HOST}}:61208"
+        container: glances
+        description: Live system stats
+        widget:
+          type: glances
+          url: "http://{{HOMEPAGE_VAR_MONITOR_HOST}}:61208"
+          version: 4
+          metric: cpu
+          refreshInterval: 5000
+
+#####################################################################
+- Tools:
+    - Portainer:
+        icon: portainer.png
+        href: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+        description: Container management UI
+        widget:
+          type: portainer
+          url: "{{HOMEPAGE_VAR_PORTAINER_URL}}"
+          env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
+          key: "{{HOMEPAGE_VAR_PORTAINER_KEY}}"
+
+#####################################################################
+- Virtualization:
+    - Proxmox (Node 1):
+        icon: proxmox.svg
+        href: "{{HOMEPAGE_VAR_PROXMOX_PVE1_URL}}"
+        widget:
+          type: proxmox
+          url: "{{HOMEPAGE_VAR_PROXMOX_PVE1_URL}}"
+          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+          password: "{{HOMEPAGE_VAR_PROXMOX_SECRET}}"
+          node: "{{HOMEPAGE_VAR_PROXMOX_PVE1_NODE}}"
+
+    - Proxmox (Node 2):
+        icon: proxmox.svg
+        href: "{{HOMEPAGE_VAR_PROXMOX_PVE2_URL}}"
+        widget:
+          type: proxmox
+          url: "{{HOMEPAGE_VAR_PROXMOX_PVE2_URL}}"
+          username: "{{HOMEPAGE_VAR_PROXMOX_USER}}"
+          password: "{{HOMEPAGE_VAR_PROXMOX_SECRET}}"
+          node: "{{HOMEPAGE_VAR_PROXMOX_PVE2_NODE}}"
 ```
 
-**settings.yaml**
+---
+
+# settings.yaml
+
+This controls:
+
+* Theme (dark/light)
+* Layout (columns, tabs)
+* Background image
+* Color scheme
+* Tab structure
+
+It does **not** define services.
+
+It defines:
+
+> “How is the dashboard arranged and styled?”
+
 ```yaml
-TO_BE_ADDED
+title: "Homepage Dashboard"
+language: en
+theme: dark
+color: slate
+target: _self
+headerStyle: boxed
+statusStyle: dot
+hideVersion: true
+
+fullWidth: true
+maxGroupColumns: 6
+useEqualHeights: true
+
+background:
+  image: /images/background.jpg
+  blur: sm
+  saturate: 50
+  brightness: 50
+  opacity: 35
+
+favicon: /icons/favicon.png
+
+layout:
+  System Monitoring:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-server
+
+  Tools:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-tools
+
+  Virtualization:
+    tab: HOME
+    style: row
+    columns: 2
+    icon: mdi-server-network
 ```
 
+---
 
-**widgets.yaml**
+# widgets.yaml
+
+Widgets are things that appear at the top or side of your dashboard:
+
+* Logo
+* Greeting
+* System resource monitor
+* Date/time
+* Weather
+* Search bar
+
+These are not services — they are UI utilities.
+
+Think of this file as:
+> “What informational panels do I want above my services?”
+
 ```yaml
-TO_BE_ADDED
+- logo:
+    icon: /icons/logo.png
+
+- greeting:
+    text_size: 4xl
+    text: Welcome!
+
+- resources:
+    expanded: false
+    cpu: true
+    memory: true
+    refresh: 1000
+
+- datetime:
+    text_size: 4xl
+    format:
+      timeStyle: short
+      hour12: false
+
+- datetime:
+    text_size: md
+    format:
+      dateStyle: long
+      hour12: false
+
+- search:
+    provider: google
+    focus: true
+    showSearchSuggestions: true
+    target: _parent
+
+- openmeteo:
+    label: Weather
+    latitude: 0.0
+    longitude: 0.0
+    timezone: UTC
+    units: metric
+    cache: 5
+    format:
+      maximumFractionDigits: 0
 ```
+
+---
+
+# Start It
+
+```bash
+docker compose up -d
+```
+
+Then open:
+
+```
+http://<your-host>:3009
+```
+
+## Files
+
+[View All Files on GitHub](/files/termix/homepage)
+
+[Download All Files (ZIP)](/files/termix/homepage-files.zip)
+
+## References
+
+[Homepage GitHub](https://github.com/gethomepage/homepage)
+
+[Homepage Website](https://gethomepage.dev/)

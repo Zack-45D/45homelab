@@ -1,0 +1,25 @@
+/* Make the top-left logo bigger */
+.header .logo img,
+.header img[alt="logo"] {
+  height: 52px !important;   /* try 52, 64, 80 */
+  width: auto !important;
+}
+
+/* Fallback selector */
+img[alt="logo"] {
+  height: 52px !important;
+  width: auto !important;
+}
+
+/* Make the top-left logo more pronounced */
+header img,
+header svg {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.75)) contrast(1.25) brightness(1.15);
+}
+
+/* Give the header bar a slightly darker tint so the logo pops */
+header {
+  background: rgba(0,0,0,0.25) !important;
+  backdrop-filter: blur(6px);
+}
+

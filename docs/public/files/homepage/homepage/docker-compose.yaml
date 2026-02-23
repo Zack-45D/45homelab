@@ -1,0 +1,57 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+
+    env_file:
+      - ./.env
+
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+
+      # Use docker proxy (recommended over raw docker.sock)
+      DOCKER_HOST: http://dockerproxy:2375
+
+    ports:
+      - 3009:3000
+
+    volumes:
+      - ./config:/app/config
+      - ./config/icons:/app/public/icons:ro
+      - ./config/images:/app/public/images:ro
+
+    restart: unless-stopped
+
+  # Optional: Docker auto-discovery proxy
+  dockerproxy:
+    image: tecnativa/docker-socket-proxy:latest
+    container_name: dockerproxy
+    restart: unless-stopped
+    environment:
+      CONTAINERS: 1
+      INFO: 1
+      IMAGES: 1
+      NETWORKS: 1
+      SERVICES: 1
+      TASKS: 1
+      EVENTS: 1
+      VOLUMES: 1
+      SYSTEM: 1
+      VERSION: 1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # Optional: Glances system monitoring
+  glances:
+    image: nicolargo/glances:latest
+    container_name: glances
+    restart: unless-stopped
+    pid: host
+    ports:
+      - "61208:61208"
+    environment:
+      - GLANCES_OPT=-w
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+

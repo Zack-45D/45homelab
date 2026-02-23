@@ -1,0 +1,60 @@
+- logo:
+    icon: /icons/45homelab-logo.png
+
+- greeting:
+    text_size: 4xl
+    text: Welcome!
+
+- resources:
+    expanded: false
+    cpu: true
+    cputemp: true
+    memory: true
+    refresh: 1000
+
+- greeting:
+    text_size: 4xl
+    text: —
+
+- resources:
+    label: STORAGE
+    expanded: true
+    disk:
+      - /
+
+- greeting:
+    text_size: 4xl
+    text: —
+
+- resources:
+    expanded: false
+    uptime: true
+    refresh: 1000
+
+- datetime:
+    text_size: 4xl
+    format:
+      timeStyle: short
+      hour12: false
+
+- datetime:
+    text_size: md
+    format:
+      dateStyle: long
+      hour12: false
+
+- search:
+    provider: google
+    focus: true
+    showSearchSuggestions: true
+    target: _parent
+
+- openmeteo:
+    label: Location
+    latitude: 0.00
+    longitude: 0.00
+    timezone: UTC
+    units: metric
+    cache: 5
+    format:
+      maximumFractionDigits: 0
