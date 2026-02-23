@@ -16,7 +16,7 @@ hero:
       link: /articles/
 ---
 
-## Articles
+# Articles
 
 - [Cloud-Init](/articles/cloud-init/)
 - [Homepage](/articles/homepage/)

@@ -58,7 +58,7 @@ qm template 9000
 
 ---
 
-**Terraform template files**
+## Terraform template files
 
 **placeholders** like `REPLACE_ME`, `${ADMIN_USER}`, etc.
 
@@ -385,3 +385,7 @@ vm_start_index = 1
 # SSH key injection (public key path)
 ssh_pubkey_path = "~/.ssh/id_ed25519.pub"
 ```
+
+## References
+
+- [Cloud-Init Proxmox](https://pve.proxmox.com/wiki/Cloud-Init_Support)
