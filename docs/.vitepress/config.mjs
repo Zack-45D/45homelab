@@ -3,14 +3,16 @@ export default {
   lang: "en-US",
   title: "45Homelab Docs",
   description: "Centralized links and notes",
-  base: "/45homelab/",
+  base: "/",          // ✅ custom domain (docs.45homelab.com)
   cleanUrls: true,
 
-  // ✅ Don't treat docs/_templates as site pages (prevents build failures)
+  // ✅ Don't treat docs/_templates as site pages
   srcExclude: ["**/_templates/**"],
 
   themeConfig: {
     siteTitle: "45Homelab Docs",
+
+    // ✅ Must live at: docs/public/images/45homelab-logo.png
     logo: "/images/45homelab-logo.png",
 
     nav: [
@@ -24,7 +26,10 @@ export default {
         {
           text: "Articles",
           items: [
-            { text: "Cloud-Init", link: "/articles/cloud-init/" }
+            { text: "Cloud-Init", link: "/articles/cloud-init/" },
+            { text: "Homepage", link: "/articles/homepage/" },
+            { text: "Termix", link: "/articles/termix/" }
+
             // Add new articles here:
             // { text: "HL15 Beast Deploy", link: "/articles/hl15-beast-deploy/" }
           ]
