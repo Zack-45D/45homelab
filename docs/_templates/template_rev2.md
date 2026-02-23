@@ -23,7 +23,7 @@ Everything will match that slug.
 
 ---
 
-#  SAVE THIS AS:
+# SAVE THIS AS
 
 ```
 docs/_templates/_article_creation_workflow.md

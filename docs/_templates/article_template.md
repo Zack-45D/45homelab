@@ -1,11 +1,13 @@
 # {{TITLE}}
 
 ## YouTube Video
+
 - [45Homelab TOPIC Video](https://www.youtube.com/watch?...)
 
 ---
 
 ## What this page contains
+
 Notes, commands, and downloadable example files used in the **TOPIC** video.
 
 ---
@@ -13,11 +15,13 @@ Notes, commands, and downloadable example files used in the **TOPIC** video.
 ## Notes / Walkthrough
 
 ### Step 1 — Section Title
+
 Explanation of what happens here.
 
 ---
 
 ### Step 2 — Section Title
+
 Explanation of what happens here.
 
 ---
@@ -69,24 +73,25 @@ config-overview.png
 network-diagram.png
 ```
 
-
 ---
 
 ## Files
 
 ### 📂 Browse Files Online
+
 View all files directly on GitHub:
-https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPO>/tree/main/docs/public/files/<ARTICLE_SLUG>/
+<https://github.com/><YOUR_GITHUB_USERNAME>/<YOUR_REPO>/tree/main/docs/public/files/<ARTICLE_SLUG>/
 
 ### ⬇ Download All Files (ZIP)
+
 Download everything in one archive:
 `/files/<ARTICLE_SLUG>/<ARTICLE_SLUG>-files.zip`
 
 ### Individual Files
+
 - `/files/<ARTICLE_SLUG>/docker-compose.yml`
 - `/files/<ARTICLE_SLUG>/example-config.yml`
 
 > All downloadable files for this article are stored in:
 >
 > `docs/public/files/<ARTICLE_SLUG>/`
-

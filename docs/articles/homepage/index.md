@@ -2,7 +2,7 @@
 
 ## YouTube Video
 
-* [Homepage Walkthrough](https://www.youtube.com/watch?v=7hc7mjitgIQ)
+- [Homepage Walkthrough](https://www.youtube.com/watch?v=7hc7mjitgIQ)
 
 ---
 
@@ -10,26 +10,24 @@
 
 This guide includes:
 
-* Example `.env` file (safe template)
-* `docker-compose.yaml`
-* `services.yaml`
-* `settings.yaml`
-* `widgets.yaml`
-* Notes on required vs optional sections
+- Example `.env` file (safe template)
+- `docker-compose.yaml`
+- `services.yaml`
+- `settings.yaml`
+- `widgets.yaml`
+- Notes on required vs optional sections
 
 ---
 
-# Homepage Setup Walkthrough
-
----
+## Homepage Setup Walkthrough
 
 ## Folder Structure
 
 In my setup, each container lives in:
 
-```
+```text
 /home/<user>/docker/<container_name>
-```
+````
 
 Example:
 
@@ -42,7 +40,7 @@ Example:
 
 The `config/` directory contains:
 
-```
+```text
 services.yaml
 settings.yaml
 widgets.yaml
@@ -52,13 +50,14 @@ images/
 
 ---
 
-# .env file (Recommended)
+## .env file (Recommended)
 
-Using an `.env` file makes configuration cleaner and prevents secrets from being hardcoded in YAML.
+Using an `.env` file makes configuration cleaner and prevents secrets from being
+hardcoded in YAML.
 
 Create a file named:
 
-```
+```text
 .env
 ```
 
@@ -98,20 +97,21 @@ HOMEPAGE_VAR_PROXMOX_PVE3_NODE=node3
 
 ---
 
-# 3️⃣ docker-compose.yaml
+## docker-compose.yaml
 
-This is the minimal working setup with optional Docker auto-discovery and Glances.
+This is a minimal working setup with optional Docker auto-discovery and
+Glances.
 
-## Docker-compse.yaml breakdown
+### docker-compose.yaml breakdown
 
-| Component              | What It Does                                                                                            |
-| ---------------------- | ------------------------------------------------------------------------------------------------------- |
-| **homepage service**   | The main container running the Homepage dashboard UI                                                    |
-| **config volume**      | Mounts your local `./config` folder into the container so your settings persist                         |
-| **.env file**          | Stores variables (API keys, URLs, secrets) used inside your YAML files                                  |
-| **dockerproxy**        | Optional security layer that allows Homepage to read Docker info without exposing the raw `docker.sock` |
-| **glances**            | Optional monitoring container used to show live CPU/RAM stats in Homepage                               |
-| **icons/images mount** | Optional mount allowing custom icons and background images                                              |
+| Component              | What It Does                                                                                   |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| **homepage service**   | The main container running the Homepage dashboard UI                                           |
+| **config volume**      | Mounts your local `./config` folder into the container so your settings persist                |
+| **.env file**          | Stores variables (API keys, URLs, secrets) used inside your YAML files                         |
+| **dockerproxy**        | Optional security layer that lets Homepage read Docker info without exposing raw `docker.sock` |
+| **glances**            | Optional monitoring container used to show live CPU/RAM stats in Homepage                      |
+| **icons/images mount** | Optional mount allowing custom icons and background images                                     |
 
 ```yaml
 services:
@@ -174,14 +174,14 @@ services:
 
 ---
 
-# services.yaml
+## services.yaml
 
 This defines:
 
-* Service groups (System Monitoring, Tools, Virtualization, etc.)
-* Links (href)
-* Icons
-* Embedded widgets (Proxmox, Glances, Portainer, etc.)
+- Service groups (System Monitoring, Tools, Virtualization, etc.)
+- Links (`href`)
+- Icons
+- Embedded widgets (Proxmox, Glances, Portainer, etc.)
 
 Think of this file as:
 
@@ -239,15 +239,15 @@ Think of this file as:
 
 ---
 
-# settings.yaml
+## settings.yaml
 
 This controls:
 
-* Theme (dark/light)
-* Layout (columns, tabs)
-* Background image
-* Color scheme
-* Tab structure
+- Theme (dark/light)
+- Layout (columns, tabs)
+- Background image
+- Color scheme
+- Tab structure
 
 It does **not** define services.
 
@@ -300,20 +300,21 @@ layout:
 
 ---
 
-# widgets.yaml
+## widgets.yaml
 
 Widgets are things that appear at the top or side of your dashboard:
 
-* Logo
-* Greeting
-* System resource monitor
-* Date/time
-* Weather
-* Search bar
+- Logo
+- Greeting
+- System resource monitor
+- Date/time
+- Weather
+- Search bar
 
 These are not services — they are UI utilities.
 
 Think of this file as:
+
 > “What informational panels do I want above my services?”
 
 ```yaml
@@ -361,7 +362,7 @@ Think of this file as:
 
 ---
 
-# Start It
+## Start It
 
 ```bash
 docker compose up -d
@@ -369,18 +370,16 @@ docker compose up -d
 
 Then open:
 
-```
+```text
 http://<your-host>:3009
 ```
 
 ## Files
 
-[Browse on GitHub](https://github.com/Zack-45D/45homelab/tree/main/docs/public/files/homepage)
-
-[Download All Files (ZIP)](/files/homepage/homepage-files.zip)
+- [Browse on GitHub](https://github.com/Zack-45D/45homelab/tree/main/docs/public/files/homepage)
+- [Download All Files (ZIP)](/files/homepage/homepage-files.zip)
 
 ## References
 
-[Homepage GitHub](https://github.com/gethomepage/homepage)
-
-[Homepage Website](https://gethomepage.dev/)
+- [Homepage GitHub](https://github.com/gethomepage/homepage)
+- [Homepage Website](https://gethomepage.dev/)

@@ -21,4 +21,3 @@ hero:
 - [Cloud-Init](/articles/cloud-init/)
 - [Homepage](/articles/homepage/)
 - [Termix](/articles/termix/)
-

@@ -1,14 +1,19 @@
 # Cloud-Init
 
 ## YouTube Video
+
 - [Cloud-Init Explained](https://www.youtube.com/watch?v=sb3PuGLT0RM&lc=Ugx_X6r_JHal_YsUUyd4AaABAg)
+
 ## What this page contains
+
 Notes and example files used in the Cloud-Init video.
 
 ## Notes
+
 General config files, contents will likely differ based on your set up
 
 ## Proxmox Template Creation Walkthrough
+
 ```bash
 # 1) Download cloud image (example: Ubuntu 22.04 Jammy)
 wget https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
@@ -140,9 +145,8 @@ provider "proxmox" {
 **What it does:**
 
 - Builds a VM list (`lab-01`, `lab-02`, etc.)
-- Uploads a _per-VM_ cloud-init snippet to Proxmox    
+- Uploads a _per-VM_ cloud-init snippet to Proxmox
 - Clones VMs from your Cloud-Init template VMID
-    
 
 ```hcl
 locals {
@@ -381,4 +385,3 @@ vm_start_index = 1
 # SSH key injection (public key path)
 ssh_pubkey_path = "~/.ssh/id_ed25519.pub"
 ```
-
