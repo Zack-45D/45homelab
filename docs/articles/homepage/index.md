@@ -375,7 +375,7 @@ http://<your-host>:3009
 
 ## Files
 
-[View All Files on GitHub](/files/homepage/homepage/)
+[Browse on GitHub](https://github.com/Zack-45D/45homelab/tree/main/docs/public/files/homepage)
 
 [Download All Files (ZIP)](/files/homepage/homepage-files.zip)
 
