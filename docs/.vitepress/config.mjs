@@ -28,7 +28,8 @@ export default {
           items: [
             { text: "Cloud-Init", link: "/articles/cloud-init/" },
             { text: "Homepage", link: "/articles/homepage/" },
-            { text: "Termix", link: "/articles/termix/" }
+            { text: "Termix", link: "/articles/termix/" },
+            { text: "PegaProx", link: "/articles/pegaprox/" }
 
             // Add new articles here:
             // { text: "HL15 Beast Deploy", link: "/articles/hl15-beast-deploy/" }

@@ -1,8 +1,8 @@
-# {{TITLE}}
+# PegaProx
 
 ## YouTube Video
 
-- [45Homelab TOPIC Video](https://www.youtube.com/watch?...)
+- [45Homelab Pegaprox Video](https://www.youtube.com/watch?...)
 
 ---
 
@@ -55,4 +55,3 @@ services:
 
 - [<TOPIC> GitHub]()
 - [<TOPIC> Website]()
-
