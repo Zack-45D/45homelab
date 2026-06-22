@@ -1,4 +1,56 @@
 // docs/.vitepress/config.mjs
+import { readdirSync, statSync, existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+
+// ---------------------------------------------------------------------------
+// Drafts mechanism
+//
+// Production builds set VITEPRESS_BUILD=true (see package.json scripts).
+// In dev (`npm run docs:dev`), anything in docs/_drafts/ is served at
+//   /_drafts/<slug>/
+// so you can preview unfinished articles locally. In production the
+// drafts folder is excluded from the build entirely — nothing in it ever
+// ships to the live site.
+// ---------------------------------------------------------------------------
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const draftsDir = join(__dirname, "..", "_drafts");
+const isProductionBuild = process.env.VITEPRESS_BUILD === "true";
+
+const srcExclude = ["**/_templates/**"];
+if (isProductionBuild) srcExclude.push("**/_drafts/**");
+
+function listDrafts() {
+  if (!existsSync(draftsDir)) return [];
+  return readdirSync(draftsDir)
+    .filter((name) => {
+      const p = join(draftsDir, name);
+      try {
+        return statSync(p).isDirectory() && existsSync(join(p, "index.md"));
+      } catch {
+        return false;
+      }
+    })
+    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+    .map((slug) => ({ text: slug, link: `/_drafts/${slug}/` }));
+}
+
+const draftsNav = isProductionBuild
+  ? []
+  : [{ text: "Drafts (local)", link: "/_drafts/" }];
+
+const draftsSidebar = isProductionBuild
+  ? {}
+  : {
+      "/_drafts/": [
+        {
+          text: "Drafts (local only — excluded from production)",
+          items: listDrafts()
+        }
+      ]
+    };
+
 export default {
   lang: "en-US",
   title: "45Homelab Docs",
@@ -6,8 +58,7 @@ export default {
   base: "/",          // ✅ custom domain (docs.45homelab.com)
   cleanUrls: true,
 
-  // ✅ Don't treat docs/_templates as site pages
-  srcExclude: ["**/_templates/**"],
+  srcExclude,
 
   themeConfig: {
     siteTitle: "45Homelab Docs",
@@ -17,24 +68,27 @@ export default {
 
     nav: [
       { text: "Home", link: "/" },
-      { text: "Articles", link: "/articles/" }
+      { text: "Articles", link: "/articles/" },
+      ...draftsNav
     ],
 
-    // Sidebar only appears when you're in /articles/
+    // Sidebar appears when you're in /articles/.
+    // Entries between the managed:articles-sidebar markers are maintained
+    // by scripts/publish.sh — keep the marker comments intact.
     sidebar: {
       "/articles/": [
         {
           text: "Articles",
           items: [
+            // managed:articles-sidebar:start
             { text: "Cloud-Init", link: "/articles/cloud-init/" },
             { text: "Homepage", link: "/articles/homepage/" },
-            { text: "Termix", link: "/articles/termix/" }
-
-            // Add new articles here:
-            // { text: "HL15 Beast Deploy", link: "/articles/hl15-beast-deploy/" }
+            { text: "Termix", link: "/articles/termix/" },
+            // managed:articles-sidebar:end
           ]
         }
-      ]
+      ],
+      ...draftsSidebar
     },
 
     outline: "deep",

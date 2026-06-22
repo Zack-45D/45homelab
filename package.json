@@ -4,9 +4,12 @@
   "description": "A Repository for the 45Homelab YouTube channel",
   "scripts": {
     "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "build": "vitepress build docs"
+    "docs:build": "VITEPRESS_BUILD=true vitepress build docs",
+    "docs:preview": "VITEPRESS_BUILD=true vitepress build docs && vitepress preview docs",
+    "build": "VITEPRESS_BUILD=true vitepress build docs",
+    "new": "./scripts/new-article.sh",
+    "publish": "./scripts/publish.sh",
+    "set-youtube": "./scripts/set-youtube.sh"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.21.0",
