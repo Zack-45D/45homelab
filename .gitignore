@@ -3,3 +3,6 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 docs/.vitepress/.temp
 
+# Local-only authoring notes (workflow doc + AI prompt). Not part of the public repo.
+docs/_templates/
+
