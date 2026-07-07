@@ -83,6 +83,7 @@ export default {
             // managed:articles-sidebar:start
             { text: "Cloud-Init", link: "/articles/cloud-init/" },
             { text: "Homepage", link: "/articles/homepage/" },
+            { text: "Odysseus", link: "/articles/odysseus/" },
             { text: "Termix", link: "/articles/termix/" },
             // managed:articles-sidebar:end
           ]

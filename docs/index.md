@@ -24,6 +24,7 @@ hero:
   the most recent 10. Keep the marker comments intact.
 -->
 <!-- managed:home-articles:start -->
+- [Odysseus](/articles/odysseus/)
 - [Cloud-Init](/articles/cloud-init/)
 - [Homepage](/articles/homepage/)
 - [Termix](/articles/termix/)
