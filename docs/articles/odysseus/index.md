@@ -195,8 +195,9 @@ Leave these at their defaults:
 # APP_PORT=7000          ← change only if 7000 is already in use
 ```
 
-A ready-to-paste snippet is available as
-[env.example](/files/odysseus/env.example).
+A ready-to-paste snippet is available in the downloadable
+[odysseus-files.zip](/files/odysseus/odysseus-files.zip) (see the Files
+section at the bottom).
 
 > Only use `APP_BIND=0.0.0.0` on a trusted local network. Odysseus has
 > shell access, file system access, and email/calendar integration — treat
@@ -336,8 +337,8 @@ model, click **Download**, then **Run** after it completes.
 
 If you're storing downloaded models on a ZFS pool, give them a dedicated
 dataset rather than dumping them at the pool root. A ready-to-run version
-of these commands is available as
-[zfs-setup.sh](/files/odysseus/zfs-setup.sh):
+of these commands is included in
+[odysseus-files.zip](/files/odysseus/odysseus-files.zip) as `zfs-setup.sh`:
 
 ```bash
 zfs create yourpool/models
@@ -446,10 +447,13 @@ Back this up. `.env` + `data/` is everything needed to restore from scratch.
 
 ## Files
 
-- [env.example](/files/odysseus/env.example) — the `.env` setting to
-  change for LAN access.
-- [zfs-setup.sh](/files/odysseus/zfs-setup.sh) — optional ZFS dataset
-  properties for a dedicated model store.
+- [Browse on GitHub](https://github.com/Zack-45D/45homelab/tree/main/docs/public/files/odysseus)
+- [Download All Files (ZIP)](/files/odysseus/odysseus-files.zip)
+
+Contents:
+
+- `env.example` — the `.env` setting to change for LAN access.
+- `zfs-setup.sh` — optional ZFS dataset properties for a dedicated model store.
 
 ---
 
