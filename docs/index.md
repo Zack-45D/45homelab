@@ -24,6 +24,7 @@ hero:
   the most recent 10. Keep the marker comments intact.
 -->
 <!-- managed:home-articles:start -->
+- [X15 Gaming VM](/articles/x15-gaming-vm/)
 - [Odysseus](/articles/odysseus/)
 - [Cloud-Init](/articles/cloud-init/)
 - [Homepage](/articles/homepage/)

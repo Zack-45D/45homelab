@@ -85,6 +85,7 @@ export default {
             { text: "Homepage", link: "/articles/homepage/" },
             { text: "Odysseus", link: "/articles/odysseus/" },
             { text: "Termix", link: "/articles/termix/" },
+            { text: "X15 Gaming VM", link: "/articles/x15-gaming-vm/" },
             // managed:articles-sidebar:end
           ]
         }
