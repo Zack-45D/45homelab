@@ -160,6 +160,14 @@ existing.insert(0, bullet)        # newest first
 existing = existing[:cap]         # keep most-recent N
 body = "\n" + "\n".join(existing) + "\n"
 src = src[:m.start(2)] + body + src[m.end(2):]
+
+# Keep the hero "Latest Article" button in sync with the newest article.
+hero_re = re.compile(r'(text:\s*Latest Article\s*\n\s*link:\s*)/articles/[^/\s]+/')
+new_src, n = hero_re.subn(rf'\g<1>/articles/{slug}/', src, count=1)
+if n == 0:
+    sys.exit("hero 'Latest Article' link not found in docs/index.md")
+src = new_src
+
 p.write_text(src)
 PY
 

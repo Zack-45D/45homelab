@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Latest Article
-      link: /articles/homepage/
+      link: /articles/forgejo-unraid/
     - theme: alt
       text: Browse All Articles
       link: /articles/
