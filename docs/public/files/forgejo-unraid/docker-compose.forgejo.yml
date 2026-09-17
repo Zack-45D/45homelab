@@ -1,0 +1,36 @@
+services:
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: forgejo-tailscale
+    hostname: forgejo
+    environment:
+      - TS_AUTHKEY=tskey-auth-PASTE-YOURS-HERE
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/serve.json
+    volumes:
+      - /mnt/user/appdata/forgejo-tailscale/state:/var/lib/tailscale
+      - /mnt/user/appdata/forgejo-tailscale/config:/config
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "222:22"
+
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:16
+    container_name: forgejo
+    network_mode: "service:tailscale"
+    depends_on:
+      - tailscale
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - TZ=America/Halifax
+    restart: unless-stopped
+    volumes:
+      - /mnt/user/appdata/forgejo:/data
+      - /etc/localtime:/etc/localtime:ro

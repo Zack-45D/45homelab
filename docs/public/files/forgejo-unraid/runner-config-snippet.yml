@@ -1,0 +1,16 @@
+# Generate the base file first:
+#   docker run --rm data.forgejo.org/forgejo/runner:12 \
+#     forgejo-runner generate-config > /mnt/user/appdata/forgejo-runner/data/runner-config.yml
+#
+# Then add these two blocks to it.
+
+runner:
+  labels:
+    - "docker:docker://python:3.12-slim"
+
+server:
+  connections:
+    forgejo:
+      url: http://<your-unraid-ip>:3000/
+      uuid: <paste-uuid>
+      token: <paste-token>

@@ -1,0 +1,20 @@
+name: Ansible Check
+on: [push]
+jobs:
+  syntax-check:
+    runs-on: docker
+    steps:
+      - name: Checkout
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq git
+          git clone --depth 1 "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" .
+      - name: Install Ansible
+        run: pip install --break-system-packages --quiet ansible
+      - name: Syntax check
+        run: ansible-playbook --syntax-check -i hosts deploy-monitoring.yml
+      - name: YAML lint (informational only)
+        continue-on-error: true
+        run: |
+          pip install --break-system-packages --quiet yamllint
+          yamllint -d relaxed .

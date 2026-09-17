@@ -82,6 +82,7 @@ export default {
           items: [
             // managed:articles-sidebar:start
             { text: "Cloud-Init", link: "/articles/cloud-init/" },
+            { text: "Forgejo on Unraid", link: "/articles/forgejo-unraid/" },
             { text: "Homepage", link: "/articles/homepage/" },
             { text: "Odysseus", link: "/articles/odysseus/" },
             { text: "Termix", link: "/articles/termix/" },
