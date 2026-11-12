@@ -1,6 +1,6 @@
 # Homelable
 
-Homelable is a self-hosted homelab visualizer. You draw your network on a canvas, but you don't have to draw all of it by hand: it scans your network with nmap, imports your Proxmox VMs and LXCs over the API, keeps a live online/offline status on every node, and writes a documentation page for each device.
+[Homelable](https://github.com/Pouzor/homelable) is a self-hosted homelab visualizer. You draw your network on a canvas, but you don't have to draw all of it by hand: it scans your network with nmap, imports your Proxmox VMs and LXCs over the API, keeps a live online/offline status on every node, and writes a documentation page for each device.
 
 In my setup it runs in a Proxmox LXC, pulls in every VM and container from my Proxmox host, and shows the Docker containers running inside one of my VMs as their own nodes. This page walks through the whole build, from install to a finished canvas.
 

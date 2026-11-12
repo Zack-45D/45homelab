@@ -10,7 +10,7 @@ hero:
   actions:
     - theme: brand
       text: Latest Article
-      link: /articles/forgejo-unraid/
+      link: /articles/homelable/
     - theme: alt
       text: Browse All Articles
       link: /articles/
@@ -24,6 +24,7 @@ hero:
   the most recent 10. Keep the marker comments intact.
 -->
 <!-- managed:home-articles:start -->
+- [Homelable](/articles/homelable/)
 - [Forgejo on Unraid](/articles/forgejo-unraid/)
 - [X15 Gaming VM](/articles/x15-gaming-vm/)
 - [Odysseus](/articles/odysseus/)
